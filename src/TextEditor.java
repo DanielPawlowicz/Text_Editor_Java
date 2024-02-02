@@ -5,11 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class TextEditor extends JFrame implements ActionListener{
 
 	JTextArea textArea;
+	JScrollPane scroll;
 	
 	TextEditor(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,12 +21,17 @@ public class TextEditor extends JFrame implements ActionListener{
 		this.setLocationRelativeTo(null);
 		
 		textArea = new JTextArea();
-		textArea.setPreferredSize(new Dimension(450, 450));
+//		textArea.setPreferredSize(new Dimension(450, 450));
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
-		textArea.setFont(new Font("Calibri", Font.PLAIN, 20));
+		textArea.setFont(new Font("Calibri", Font.PLAIN, 100));
 		
-		this.add(textArea);
+		scroll = new JScrollPane(textArea);
+		scroll.setPreferredSize(new Dimension(450, 450));
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		this.add(scroll);
+//		this.add(textArea);
 		this.setVisible(true);
 	}
 	
